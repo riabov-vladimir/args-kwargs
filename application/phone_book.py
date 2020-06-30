@@ -15,20 +15,20 @@ from application.class_contact import Contact
 
 class PhoneBook:
 	def __init__(self, *args):
-		self.contacts = list(args)
+		self.contacts = args
 
 	def show_contacts(self):
 		for contact in self.contacts:
 			print(contact)
 
-	def add_contact(self, contact: Contact):
+	def add_contact(self, contact):
 		self.contacts.append(contact)
 
 
 if __name__ == '__main__':
-	c_list = (Contact('a', 'b', 123), Contact('c', 'd', 456))
-	my_phonebook = PhoneBook(c_list)
+	c_list = ('1', '2', '3')     # [Contact('a', 'b', 123), Contact('c', 'd', 456)]
+	my_phonebook = PhoneBook(Contact('a', 'b', 123, telegram=325325), Contact('c', 'd', 456))
 	my_phonebook.show_contacts()
 	print('')
-	my_phonebook.add_contact(Contact('e', 'f', 789))
-	my_phonebook.show_contacts()
+	# my_phonebook.add_contact(Contact('e', 'f', 789))
+	# my_phonebook.show_contacts()
