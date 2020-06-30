@@ -1,16 +1,5 @@
 from application.class_contact import Contact
 
-"""_2. класс PhoneBook:
-
-Название телефонной книги - обязательное поле;
-Телефонная книга должна работать с классами Contact.
-Методы:
-
-
-Удаление контакта по номеру телефона;
-Поиск всех избранных номеров;
-Поиск контакта по имени и фамилии.
-"""
 
 class PhoneBook:
 	def __init__(self, phone_book_name, *args):
@@ -21,32 +10,28 @@ class PhoneBook:
 		return self.name
 
 	def show_contacts(self):
+		print(f'Содержимое телефонной книги {self.name}:\n')
 		for contact in self.contacts:
 			print(contact)
 
 	def add_contact(self, contact):
 		self.contacts.append(contact)
+		print(f'Контакт "{contact.name} {contact.surname}" добавлен в телефонную книгу')
 
 	def remove_contact(self, phone_number):
 		for contact in self.contacts:
 			if contact.phone_umber == phone_number:
 				self.contacts.remove(contact)
+				print(f'Контакт "{contact.name} {contact.surname}" удалён из телефонной книги')
 
 	def show_favourites(self):
+		print('Избранные контакты:\n')
 		for contact in self.contacts:
 			if contact.favourites:
 				print(contact)
 
-if __name__ == '__main__':
 
-	my_phonebook = PhoneBook('my_book', Contact('a', 'b', 123, telegram=325325), Contact('c', 'd', 456, True))
-	# my_phonebook.show_contacts()
-	print(my_phonebook)
-	print(my_phonebook.contacts)
-	my_phonebook.add_contact(Contact('e', 'f', 789))
-	# my_phonebook.show_contacts()
-	print(my_phonebook.contacts)
-	# my_phonebook.show_contacts()
-	# my_phonebook.remove_contact(789)
-	# print(my_phonebook.contacts)
-	my_phonebook.show_favourites()
+	def show_contact_name_surname(self, name, surname):
+		for contact in self.contacts:
+			if (name == contact.name) and (surname == contact.surname):
+				print(contact)
