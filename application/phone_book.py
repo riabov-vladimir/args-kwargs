@@ -15,7 +15,7 @@ from application.class_contact import Contact
 
 class PhoneBook:
 	def __init__(self, *args):
-		self.contacts = args
+		self.contacts = list(args)
 
 	def show_contacts(self):
 		for contact in self.contacts:
@@ -30,5 +30,7 @@ if __name__ == '__main__':
 	my_phonebook = PhoneBook(Contact('a', 'b', 123, telegram=325325), Contact('c', 'd', 456))
 	my_phonebook.show_contacts()
 	print('')
-	# my_phonebook.add_contact(Contact('e', 'f', 789))
+	my_phonebook.add_contact(Contact('e', 'f', 789))
 	# my_phonebook.show_contacts()
+	print(my_phonebook.contacts)
+	my_phonebook.show_contacts()
