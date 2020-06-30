@@ -13,8 +13,12 @@ from application.class_contact import Contact
 """
 
 class PhoneBook:
-	def __init__(self, *args):
+	def __init__(self, phone_book_name, *args):
+		self.name = phone_book_name
 		self.contacts = list(args)
+
+	def __str__(self):
+		return self.name
 
 	def show_contacts(self):
 		for contact in self.contacts:
@@ -28,14 +32,21 @@ class PhoneBook:
 			if contact.phone_umber == phone_number:
 				self.contacts.remove(contact)
 
+	def show_favourites(self):
+		for contact in self.contacts:
+			if contact.favourites:
+				print(contact)
+
 if __name__ == '__main__':
 
-	my_phonebook = PhoneBook(Contact('a', 'b', 123, telegram=325325), Contact('c', 'd', 456))
+	my_phonebook = PhoneBook('my_book', Contact('a', 'b', 123, telegram=325325), Contact('c', 'd', 456, True))
 	# my_phonebook.show_contacts()
+	print(my_phonebook)
 	print(my_phonebook.contacts)
 	my_phonebook.add_contact(Contact('e', 'f', 789))
 	# my_phonebook.show_contacts()
 	print(my_phonebook.contacts)
 	# my_phonebook.show_contacts()
-	my_phonebook.remove_contact(789)
-	print(my_phonebook.contacts)
+	# my_phonebook.remove_contact(789)
+	# print(my_phonebook.contacts)
+	my_phonebook.show_favourites()
